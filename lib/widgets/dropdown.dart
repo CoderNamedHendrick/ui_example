@@ -196,14 +196,12 @@ class _CustomDropdownState extends State<CustomDropdown>
                                 topOffset -
                                 15,
                           ),
-                          child: ListView.separated(
+                          child: ListView.builder(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 12),
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
                             itemCount: widget.items.length,
-                            separatorBuilder: (_, __) =>
-                                const SizedBox(height: 10),
                             itemBuilder: (context, index) => InkWell(
                               onTap: () {
                                 dropdownValueNotifier.value =
@@ -211,22 +209,26 @@ class _CustomDropdownState extends State<CustomDropdown>
                                 widget.onChanged?.call(widget.items[index]);
                                 _toggleDropdown();
                               },
-                              child: Row(
-                                children: [
-                                  const _SelectorCircle(),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Text(
-                                      widget.items[index],
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall
-                                          ?.copyWith(
-                                            color: Colors.black,
-                                          ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Row(
+                                  children: [
+                                    const _SelectorCircle(),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(
+                                        widget.items[index],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                              color: Colors.black,
+                                            ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

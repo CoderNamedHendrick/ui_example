@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:practice/assetx.dart';
 import 'package:practice/constants.dart';
+import 'package:practice/views/attendance.dart';
 import 'package:practice/views/form_page.dart';
+import 'package:practice/widgets/notification_icon.dart';
 
 import '../widgets/widgets.dart';
 
@@ -40,7 +42,7 @@ class Home extends StatelessWidget {
                         leading: const Icon(Icons.checklist_sharp),
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => const FormPage()));
+                              builder: (_) => const Attendance()));
                         },
                       ),
                       SizedBox(
@@ -122,50 +124,7 @@ class _PageHeader extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned.fill(
-                  child: Container(
-                    decoration: const ShapeDecoration(
-                      shape: CircleBorder(),
-                      color: Colors.white,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.notifications,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  child: Container(
-                    height: 18,
-                    width: 18,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: CircleBorder(
-                        side: BorderSide(
-                            width: 2,
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.keyboard_arrow_right_outlined,
-                      size: 15,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+          const NotificationIcon(),
         ],
       ),
     );
